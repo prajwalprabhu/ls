@@ -13,7 +13,6 @@ import (
 type ls struct {
 	command        []string
 	command_output []fs.FileInfo
-	// final_output   []string
 	hidden bool
 	full   bool
 }
