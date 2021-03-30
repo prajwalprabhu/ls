@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/fs"
 	"io/ioutil"
+	"log"
 	"os"
 
 	"github.com/fatih/color"
@@ -26,9 +27,9 @@ func (data *ls) get() {
 	var command string
 	if len(data.command) > 1 {
 		for _, val := range data.command {
-			if val == "-a" || val == "a" {
+			if val == "-a"   {
 				data.hidden = true
-			} else if val == "-l" || val == "l" {
+			} else if val == "-l"  {
 				data.full = true
 			} else if val == "-la" {
 				data.hidden = true
@@ -50,7 +51,7 @@ func (data *ls) get() {
 	}
 	out, err := ioutil.ReadDir(command)
 	if err != nil {
-		fmt.Print(err)
+		log.Fatal(err)
 	}
 	data.command_output = out
 }
